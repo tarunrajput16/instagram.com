@@ -1,43 +1,143 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+        .login-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 40px;
+            text-align: center;
+            width: 350px;
+        }
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+        .logo {
+            margin-bottom: 20px;
+        }
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+        .logo img {
+            width: 175px;
+        }
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background-color: #fafafa;
+            font-size: 14px;
+        }
 
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0095f6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #b2dffc;
+            cursor: not-allowed;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .separator span {
+            padding: 0 10px;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .facebook-login {
+            color: #385185;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .forgot-password {
+            font-size: 12px;
+            color: #00376b;
+            text-decoration: none;
+        }
+
+        .signup-box {
+            margin-top: 10px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            padding: 20px;
+            text-align: center;
+            width: 350px;
+        }
+
+        .signup-box p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .signup-box a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="logo">
+            <img src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png" alt="Instagram logo">
+        </div>
+        <form>
+            <input type="text" placeholder="Phone number, username, or email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <div class="separator">
+            <span>OR</span>
+        </div>
+        <a href="#" class="facebook-login">
+            <svg aria-label="Facebook" class="_ab6-" color="rgb(56, 81, 133)" fill="rgb(56, 81, 133)" height="16" role="img" viewBox="0 0 24 24" width="16"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.008 4.385 10.973 10.124 11.85V16h-3v-4h3V9.5c0-3.155 1.89-4.884 4.793-4.884.912 0 1.86.07 2.766.195V7h-1.5c-1.38 0-1.645.654-1.645 1.61v2.39h3.295l-.53 4h-2.765v7.85C19.615 22.973 24 18.008 24 12c0-6.627-5.373-12-12-12z" fill-rule="evenodd"></path></svg>
+            Log in with Facebook
+        </a>
+        <a href="#" class="forgot-password">Forgot password?</a>
+    </div>
+    <div class="signup-box">
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+</body>
+</html>
